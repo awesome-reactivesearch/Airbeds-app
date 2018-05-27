@@ -166,3 +166,34 @@ h2 {
   display: none;
   position: absolute;
 }
+
+.popover {
+  overflow-x: hidden;
+  height: 290px;
+  width: 240px;
+}
+.extra-info-container {
+  padding-top: 20px;
+  margin-top: 175px;
+}
+.name-container {
+  font-weight: 900;
+  font-size: 18px;
+}
+.type-container {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.price-container {
+  font-weight: 400;
+  font-size: 13px;
+}
+.image-container {
+  position: absolute;
+  z-index: 0;
+  top: 0px;
+  left: 0px;
+}
+.info {
+  margin-top: 3px;
+}

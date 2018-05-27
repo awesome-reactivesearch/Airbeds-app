@@ -10,6 +10,24 @@ import {ReactiveMap} from "@appbaseio/reactivemaps";
 import "./App.css";
 
 class App extends Component {
+  onPopoverClick = function(data) {
+    return (
+      <div className="popover">
+        <div className="image-container">
+          <img src={data.image} alt={data.name} height="185" width="263" />
+        </div>
+        <div className="extra-info-container">
+          <div className="type-container info">
+            {data.room_type}-{data.beds} bed
+          </div>
+          <div className="name-container info">{data.name}</div>
+          <div className="price-container info">
+            ${data.price} per night-Free cancellation
+          </div>
+        </div>
+      </div>
+    );
+  };
   render() {
     return (
       <div className="main-container">
@@ -102,6 +120,7 @@ class App extends Component {
               />
             </div>
           </div>
+
           <div className="result-map-container">
             <ReactiveMap
               componentId="map"
@@ -115,6 +134,7 @@ class App extends Component {
                 width: "calc(100% - 280px)",
                 height: "calc(100vh - 52px)"
               }}
+              onPopoverClick={this.onPopoverClick}
               className="rightCol"
               showMarkerClusters={false}
               showSearchAsMove={false}
