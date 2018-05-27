@@ -97,3 +97,72 @@
 .search {
   width: 740px;
 }
+.card-container {
+  width: calc(100% - 480px);
+  background-color: #fbfbfb;
+  margin-top: 140px;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.card {
+  width: 44%;
+  height: auto;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  position: relative;
+  padding: 0;
+}
+h2 {
+  padding-bottom: 4px;
+  font-size: 1rem;
+  margin: 10px 0 0;
+}
+.card__image {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.card__price {
+  width: 70px;
+  height: 44px;
+  background-color: #41abf5;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  color: #fafafa;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.03rem;
+}
+.card__info {
+  color: #555;
+  font-size: 14px;
+  margin: 0;
+  margin-bottom: 4px;
+}
+.result-stats {
+  text-align: right;
+  color: #666;
+  font-size: 15px;
+}
+.map-container {
+  top: 160px;
+  width: 740px;
+  height: calc(100% - 52px);
+  position: fixed;
+  right: 0;
+}
+.extra-info {
+  display: none;
+  position: absolute;
+}

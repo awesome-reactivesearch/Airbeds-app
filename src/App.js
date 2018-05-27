@@ -6,6 +6,7 @@ import {
   DateRange,
   RangeSlider
 } from "@appbaseio/reactivesearch";
+import {ReactiveMap} from "@appbaseio/reactivemaps";
 import "./App.css";
 
 class App extends Component {
@@ -100,6 +101,75 @@ class App extends Component {
                 className="search"
               />
             </div>
+          </div>
+          <div className="result-map-container">
+            <ReactiveMap
+              componentId="map"
+              dataField="location"
+              defaultZoom={13}
+              pagination
+              onPageChange={() => {
+                window.scrollTo(0, 0);
+              }}
+              style={{
+                width: "calc(100% - 280px)",
+                height: "calc(100vh - 52px)"
+              }}
+              className="rightCol"
+              showMarkerClusters={false}
+              showSearchAsMove={false}
+              innerClass={{
+                label: "label"
+              }}
+              onAllData={(
+                hits,
+                streamHits,
+                loadMore,
+                renderMap,
+                renderPagination
+              ) => (
+                <div style={{display: "flex"}}>
+                  <div className="card-container">
+                    {hits.map(data => (
+                      <div key={data._id} className="card">
+                        <div
+                          className="card__image"
+                          style={{backgroundImage: `url(${data.image})`}}
+                          alt={data.name}
+                        />
+                        <div>
+                          <h2>{data.name}</h2>
+                          <div className="card__price">${data.price}</div>
+                          <p className="card__info">
+                            {data.room_type} · {data.accommodates} guests
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                    {renderPagination()}
+                  </div>
+                  <div className="map-container">{renderMap()}</div>
+                </div>
+              )}
+              onData={data => ({
+                label: (
+                  <div
+                    className="marker"
+                    style={{
+                      width: 40,
+                      display: "block",
+                      textAlign: "center"
+                    }}
+                  >
+                    <div className="extra-info">{data.name}</div>
+                    ${data.price}
+                  </div>
+                )
+              })}
+              react={{
+                and: ["GuestSensor", "PriceSensor", "DateRangeSensor", "search"]
+              }}
+            />
           </div>
         </ReactiveBase>
       </div>
