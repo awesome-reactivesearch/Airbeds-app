@@ -6,7 +6,7 @@ Airbeds app demos the use of [ReactiveSearch](https://github.com/appbaseio/react
 
 ## Read About It
 
-A how to build post is available over [here](https://scotch.io/tutorials/build-an-airbnb-clone-with-react-and-elasticsearch).
+A how to build post is available over [here](https://medium.appbase.io/how-to-build-an-airbnb-clone-with-react-and-elasticsearch-8eb91e7e85e2).
 
 ## License
 
