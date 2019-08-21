@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import {
   ReactiveBase,
   DataSearch,
@@ -6,7 +6,7 @@ import {
   DateRange,
   RangeSlider
 } from "@appbaseio/reactivesearch";
-import {ReactiveMap} from "@appbaseio/reactivemaps";
+import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 import "./App.css";
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
       <div className="main-container">
         <ReactiveBase
           app="airbeds-test-app"
-			    credentials="X8RsOu0Lp:9b4fe1a4-58c6-4089-a042-505d86d9da30"
+          credentials="X8RsOu0Lp:9b4fe1a4-58c6-4089-a042-505d86d9da30"
           type="listing"
           theme={{
             colors: {
@@ -63,7 +63,7 @@ class App extends Component {
                       start: "$10",
                       end: "$250"
                     }}
-                    defaultSelected={{
+                    defaultValue={{
                       start: 10,
                       end: 50
                     }}
@@ -83,7 +83,7 @@ class App extends Component {
                     componentId="GuestSensor"
                     dataField="accommodates"
                     title="Guests"
-                    defaultSelected={2}
+                    defaultValue={2}
                     labelPosition="right"
                     data={{
                       start: 1,
@@ -122,7 +122,7 @@ class App extends Component {
           </div>
 
           <div className="result-map-container">
-            <ReactiveMap
+            <ReactiveGoogleMap
               componentId="map"
               dataField="location"
               defaultZoom={13}
@@ -141,20 +141,20 @@ class App extends Component {
               innerClass={{
                 label: "label"
               }}
-              onAllData={(
+              renderAllData={(
                 hits,
                 streamHits,
                 loadMore,
                 renderMap,
                 renderPagination
               ) => (
-                <div style={{display: "flex"}}>
+                <div style={{ display: "flex" }}>
                   <div className="card-container">
                     {hits.map(data => (
                       <div key={data._id} className="card">
                         <div
                           className="card__image"
-                          style={{backgroundImage: `url(${data.image})`}}
+                          style={{ backgroundImage: `url(${data.image})` }}
                           alt={data.name}
                         />
                         <div>
@@ -171,7 +171,7 @@ class App extends Component {
                   <div className="map-container">{renderMap()}</div>
                 </div>
               )}
-              onData={data => ({
+              renderData={data => ({
                 label: (
                   <div
                     className="marker"
@@ -181,8 +181,7 @@ class App extends Component {
                       textAlign: "center"
                     }}
                   >
-                    <div className="extra-info">{data.name}</div>
-                    ${data.price}
+                    <div className="extra-info">{data.name}</div>${data.price}
                   </div>
                 )
               })}
