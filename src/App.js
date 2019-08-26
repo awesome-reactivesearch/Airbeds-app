@@ -149,24 +149,26 @@ class App extends Component {
                 renderPagination
               ) => (
                 <div style={{ display: "flex" }}>
-                  <div className="card-container">
-                    {hits.map(data => (
-                      <div key={data._id} className="card">
-                        <div
-                          className="card__image"
-                          style={{ backgroundImage: `url(${data.image})` }}
-                          alt={data.name}
-                        />
-                        <div>
-                          <h2>{data.name}</h2>
-                          <div className="card__price">${data.price}</div>
-                          <p className="card__info">
-                            {data.room_type} · {data.accommodates} guests
-                          </p>
+                  <div>
+                    <div className="card-container">
+                      {hits.map(data => (
+                        <div key={data._id} className="card">
+                          <div
+                            className="card__image"
+                            style={{ backgroundImage: `url(${data.image})` }}
+                            alt={data.name}
+                          />
+                          <div>
+                            <h2>{data.name}</h2>
+                            <div className="card__price">${data.price}</div>
+                            <p className="card__info">
+                              {data.room_type} · {data.accommodates} guests
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                    {renderPagination()}
+                      ))}
+                    </div>
+                    <div>{renderPagination()}</div>
                   </div>
                   <div className="map-container">{renderMap()}</div>
                 </div>
