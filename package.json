@@ -2,9 +2,12 @@
   "name": "airbeds",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
   "dependencies": {
-    "@appbaseio/reactivemaps": "^2.0.0-alpha-07",
-    "@appbaseio/reactivesearch": "^2.6.2",
+    "@appbaseio/reactivemaps": "^3.0.0-alpha.9",
+    "@appbaseio/reactivesearch": "^3.0.0-rc.26",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "^1.1.4"
