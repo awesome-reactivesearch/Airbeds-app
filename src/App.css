@@ -98,7 +98,7 @@
   width: 740px;
 }
 .card-container {
-  width: calc(100% - 480px);
+  width: 49vw;
   background-color: #fbfbfb;
   margin-top: 140px;
   padding: 20px 0;
