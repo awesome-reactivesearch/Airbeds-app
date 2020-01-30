@@ -6,14 +6,14 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@appbaseio/reactivemaps": "^3.0.0-alpha.9",
-    "@appbaseio/reactivesearch": "^3.0.2",
+    "@appbaseio/reactivemaps": "^3.0.0-beta.4",
+    "@appbaseio/reactivesearch": "^3.3.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "^1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export PORT=8001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
