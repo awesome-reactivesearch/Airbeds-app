@@ -7,7 +7,28 @@ import {
   RangeSlider
 } from "@appbaseio/reactivesearch";
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
+import moment from "moment";
 import "./App.css";
+
+const getDateQuery = (query, value) => {
+  query = [
+    {
+      range: {
+        date_from: {
+          gte: moment(value.start).format("YYYYMMDD")
+        }
+      }
+    },
+    {
+      range: {
+        date_to: {
+          lte: moment(value.end).format("YYYYMMDD")
+        }
+      }
+    }
+  ];
+  return query;
+};
 
 class App extends Component {
   onPopoverClick = function(data) {
@@ -33,7 +54,8 @@ class App extends Component {
       <div className="main-container">
         <ReactiveBase
           app="airbeds-test-app"
-          credentials="X8RsOu0Lp:9b4fe1a4-58c6-4089-a042-505d86d9da30"
+          url="https://xe6N9nDRV:51ea7a8a-6354-4b5f-83e1-12dce3b7ec47@arc-cluster-appbase-demo-ps1pgt.searchbase.io"
+          enableAppbase
           type="listing"
           theme={{
             colors: {
@@ -102,7 +124,13 @@ class App extends Component {
                     componentId="DateRangeSensor"
                     title="When"
                     numberOfMonths={2}
-                    queryFormat="basic_date"
+                    customQuery={value => {
+                      let query = null;
+                      if (value) {
+                        query = getDateQuery(query, value);
+                      }
+                      return { query };
+                    }}
                     initialMonth={new Date("04/01/2017")}
                     className="dateFilter"
                   />
