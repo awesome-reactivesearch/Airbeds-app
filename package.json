@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "@appbaseio/reactivemaps": "^3.0.0-beta.6",
-    "@appbaseio/reactivesearch": "^3.7.10",
+    "@appbaseio/reactivesearch": "^3.7.11",
+    "moment": "^2.24.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "^1.1.4"

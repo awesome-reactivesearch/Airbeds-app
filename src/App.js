@@ -7,7 +7,28 @@ import {
   RangeSlider
 } from "@appbaseio/reactivesearch";
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
+import moment from "moment";
 import "./App.css";
+
+const getDateQuery = (query, value) => {
+  query = [
+    {
+      range: {
+        date_from: {
+          gte: moment(value.start).format("YYYYMMDD")
+        }
+      }
+    },
+    {
+      range: {
+        date_to: {
+          lte: moment(value.end).format("YYYYMMDD")
+        }
+      }
+    }
+  ];
+  return query;
+};
 
 class App extends Component {
   onPopoverClick = function(data) {
@@ -103,7 +124,13 @@ class App extends Component {
                     componentId="DateRangeSensor"
                     title="When"
                     numberOfMonths={2}
-                    queryFormat="basic_date"
+                    customQuery={value => {
+                      let query = null;
+                      if (value) {
+                        query = getDateQuery(query, value);
+                      }
+                      return { query };
+                    }}
                     initialMonth={new Date("04/01/2017")}
                     className="dateFilter"
                   />
