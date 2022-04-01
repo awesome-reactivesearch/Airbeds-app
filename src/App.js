@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import {
   ReactiveBase,
-  DataSearch,
   NumberBox,
   DateRange,
-  RangeSlider
+  RangeSlider,
+  SearchBox
 } from "@appbaseio/reactivesearch";
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
+
 import "./App.css";
 
 class App extends Component {
@@ -33,7 +34,8 @@ class App extends Component {
       <div className="main-container">
         <ReactiveBase
           app="airbeds-test-app"
-          credentials="X8RsOu0Lp:9b4fe1a4-58c6-4089-a042-505d86d9da30"
+          url="https://0db089035140:beb6fd5e-03f6-4a26-a7e2-a57550ce3286@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+          enableAppbase
           type="listing"
           theme={{
             colors: {
@@ -110,7 +112,7 @@ class App extends Component {
               </div>
             </div>
             <div className="search-container">
-              <DataSearch
+              <SearchBox
                 componentId="search"
                 dataField="name"
                 autosuggest={false}
