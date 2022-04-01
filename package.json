@@ -6,10 +6,11 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@appbaseio/reactivemaps": "^3.0.0-beta.4",
-    "@appbaseio/reactivesearch": "^3.3.4",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "@appbaseio/react-searchbox": "^1.7.0",
+    "@appbaseio/reactivemaps": "^3.0.0-beta.17",
+    "@appbaseio/reactivesearch": "^3.29.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-scripts": "^1.1.4"
   },
   "scripts": {
