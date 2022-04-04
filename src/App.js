@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  ReactiveBase
+  ReactiveBase, SearchBox
 } from "@appbaseio/reactivesearch";
 
 
@@ -19,7 +19,16 @@ class App extends Component {
             }
           }}
         >
-          Hello from Reactive Search!
+          <div className="search-container">
+              <SearchBox
+                componentId="search"
+                dataField="name"
+                autosuggest={false}
+                placeholder="Search housings..."
+                iconPosition="left"
+                className="search"
+              />
+          </div>
         </ReactiveBase>
       </div>
     );
