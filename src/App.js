@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import {
-  RangeSlider,
   ReactiveBase,
   SearchBox,
   NumberBox,
-  DateRange
+  DateRange,
+  RangeInput,
+  SelectedFilters
 } from "@appbaseio/reactivesearch";
 
 import './App.css'
@@ -48,12 +49,13 @@ class App extends Component {
               <div className="title">Airbeds</div>
             </nav>
           </div>
+          
           <div className="filters-search-container">
             <div className="filter-container">
               <div className="dropdown">
                 <button className="button">Price</button>
                 <div className="dropdown-content">
-                  <RangeSlider
+                  <RangeInput
                     componentId="PriceSensor"
                     dataField="price"
                     title="Price Range"
@@ -121,6 +123,9 @@ class App extends Component {
                 iconPosition="left"
                 className="search"
               />
+            </div>
+            <div className="selected-container">
+              <SelectedFilters/>
             </div>
           </div>
           <div className="result-map-container">
