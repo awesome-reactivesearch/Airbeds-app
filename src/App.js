@@ -7,6 +7,7 @@ import {
   DateRange
 } from "@appbaseio/reactivesearch";
 
+import './App.css'
 
 class App extends Component {
   render() {
