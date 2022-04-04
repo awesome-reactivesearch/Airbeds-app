@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import {
   RangeSlider,
-  ReactiveBase, SearchBox
+  ReactiveBase,
+  SearchBox,
+  NumberBox
 } from "@appbaseio/reactivesearch";
 
 
@@ -45,6 +47,23 @@ class App extends Component {
                 showHistogram={false}
                 className="rangeFilter"
               />
+          </div>
+          <div className="dropdown">
+                <button className="button">Guests</button>
+                <div className="dropdown-content-guest">
+                  <NumberBox
+                    componentId="GuestSensor"
+                    dataField="accommodates"
+                    title="Guests"
+                    defaultValue={2}
+                    labelPosition="right"
+                    data={{
+                      start: 1,
+                      end: 16
+                    }}
+                    className="numberFilter"
+                  />
+                </div>
           </div>
           <div className="search-container">
               <SearchBox
