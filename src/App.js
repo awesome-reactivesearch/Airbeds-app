@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import {
   ReactiveBase,
-  SearchBox
+  SearchBox,
+  NumberBox,
+  DateRange,
+  RangeInput
 } from "@appbaseio/reactivesearch";
 
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
@@ -27,6 +30,69 @@ class App extends Component {
             </nav>
           </div>
           <div className="filters-search-container">
+            <div className="filter-container">
+              <div className="dropdown">
+                <button className="button">Price</button>
+                <div className="dropdown-content">
+                  <RangeInput
+                    componentId="PriceSensor"
+                    dataField="price"
+                    title="Price Range"
+                    range={{
+                      start: 10,
+                      end: 250
+                    }}
+                    rangeLabels={{
+                      start: "$10",
+                      end: "$250"
+                    }}
+                    defaultValue={{
+                      start: 10,
+                      end: 50
+                    }}
+                    stepValue={10}
+                    interval={20}
+                    react={{
+                      and: ["DateRangeSensor", "GuestSensor"]
+                    }}
+                    showHistogram={false}
+                    className="rangeFilter"
+                  />
+                </div>
+              </div>
+              <div className="dropdown">
+                <button className="button">Guests</button>
+                <div className="dropdown-content-guest">
+                  <NumberBox
+                    componentId="GuestSensor"
+                    dataField="accommodates"
+                    title="Guests"
+                    defaultValue={2}
+                    labelPosition="right"
+                    data={{
+                      start: 1,
+                      end: 16
+                    }}
+                    className="numberFilter"
+                  />
+                </div>
+              </div>
+
+              <div className="dropdown">
+                <button className="button ">When</button>
+                <div className="dropdown-content">
+                  <DateRange
+                    dataField="date_from"
+                    componentId="DateRangeSensor"
+                    title="When"
+                    numberOfMonths={2}
+                    queryFormat="basic_date"
+                    initialMonth={new Date("04/01/2017")}
+                    className="dateFilter"
+                  />
+                </div>
+              </div>
+            </div>
             <div className="search-container">
               <SearchBox
                 componentId="search"
