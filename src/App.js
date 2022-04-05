@@ -34,8 +34,8 @@ class App extends Component {
     return (
       <div className="main-container">
         <ReactiveBase
-          app="airbeds-test-app"
-          url="https://0db089035140:beb6fd5e-03f6-4a26-a7e2-a57550ce3286@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+          app="clone-airbeds"
+          url="https://73afb5484d0e:26bd5cb0-1afc-4e19-8870-4a2eda8d0b56@appbase-demo-ansible-abxiydt-arc.searchbase.io"
           enableAppbase
           type="listing"
           theme={{
@@ -150,7 +150,6 @@ class App extends Component {
               }}
               renderAllData={(
                 hits,
-                streamHits,
                 loadMore,
                 renderMap,
                 renderPagination
