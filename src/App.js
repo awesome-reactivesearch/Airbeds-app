@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import {
-  ReactiveBase, SearchBox
+  RangeSlider,
+  ReactiveBase,
+  SearchBox,
+  NumberBox,
+  DateRange
 } from "@appbaseio/reactivesearch";
 
+import './App.css'
+import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 
 class App extends Component {
   render() {
@@ -19,7 +25,13 @@ class App extends Component {
             }
           }}
         >
-          <div className="search-container">
+          <div className="nav-container">
+            <nav className="nav">
+              <div className="title">Airbeds</div>
+            </nav>
+          </div>
+          <div className="filters-search-container">
+            <div className="search-container">
               <SearchBox
                 componentId="search"
                 dataField="name"
@@ -28,6 +40,7 @@ class App extends Component {
                 iconPosition="left"
                 className="search"
               />
+            </div>
           </div>
         </ReactiveBase>
       </div>
