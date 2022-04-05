@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import {
-  RangeSlider,
   ReactiveBase,
-  SearchBox,
-  NumberBox,
-  DateRange
+  SearchBox
 } from "@appbaseio/reactivesearch";
-
-import './App.css'
-import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 
 class App extends Component {
   render() {
