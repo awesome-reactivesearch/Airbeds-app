@@ -139,8 +139,8 @@ class App extends Component {
                 window.scrollTo(0, 0);
               }}
               style={{
-                width: "calc(100% - 280px)",
-                height: "calc(100vh - 52px)"
+                width: "100%",
+                height: "100%"
               }}
               className="rightCol"
               showMarkerClusters={false}
@@ -152,9 +152,13 @@ class App extends Component {
                 hits,
                 loadMore,
                 renderMap,
-                renderPagination
+                renderPagination,
+                triggerClickAnalytics,
+                meta
               ) => (
-                <div style={{ display: "flex" }}>
+                <div>
+                  <div className="total-results">Total results: {meta.resultStats.numberOfResults}</div>
+                <div className="card-map-container">
                   <div>
                     <div className="card-container">
                       {hits.map(data => (
@@ -177,6 +181,7 @@ class App extends Component {
                     <div>{renderPagination()}</div>
                   </div>
                   <div className="map-container">{renderMap()}</div>
+                </div>
                 </div>
               )}
               renderData={data => ({

@@ -3,7 +3,8 @@
     flex-direction: column;
   }
   .nav-container {
-    position: fixed;
+    position: sticky;
+    top: 0px;
     width: 100%;
     z-index: 3;
     display: flex;
@@ -65,7 +66,7 @@
   
   .filters-search-container {
     width: 100%;
-    position: fixed;
+    position: sticky;
     top: 80px;
     display: flex;
     z-index: 2;
@@ -75,6 +76,7 @@
     align-items: center;
     border-bottom: 1px solid #f0f0f0;
     flex-wrap: wrap;
+    --h-padding: 20px;
   }
   .button {
     background-color: #ffffff; /* Green */
@@ -82,7 +84,7 @@
     text-decoration: none;
     text-align: center;
     font-size: 16px;
-    margin: 8px 20px;
+    margin: 8px var(--h-padding);
     cursor: pointer;
     outline: none;
     height: 40px;
@@ -95,13 +97,23 @@
     display: flex;
     flex-direction: row;
   }
+  .search-container{
+    margin: 0px var(--h-padding);
+  }
   .search {
     width: 740px;
   }
+  .card-map-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 500px) {
+    .card-map-container{
+      grid-template-columns: 1fr;
+    }
+  }
   .card-container {
-    width: 49vw;
     background-color: #fbfbfb;
-    margin-top: 140px;
     padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
@@ -151,32 +163,25 @@
     margin: 0;
     margin-bottom: 4px;
   }
+  .map-container{
+    padding-top: 20px;
+  }
   .result-stats {
     text-align: right;
     color: #666;
     font-size: 15px;
   }
+  .total-results{
+    padding: 10px 30px;
+  }
   .selected-container{
     width: 100%;
     padding: 5px 20px;
-  }
-  .result-map-container{
-    position: relative;
-    top: 50px;
-  }
-  .map-container {
-    top: 160px;
-    width: 740px;
-    height: calc(100% - 52px);
-    position: fixed;
-    right: 0;
-    top: 200px;
   }
   .extra-info {
     display: none;
     position: absolute;
   }
-  
   .popover {
     overflow-x: hidden;
     height: 290px;
