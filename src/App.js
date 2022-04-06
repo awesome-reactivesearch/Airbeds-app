@@ -144,7 +144,7 @@ class App extends Component {
               }}
               className="rightCol"
               showMarkerClusters={false}
-              showSearchAsMove={false}
+              showSearchAsMove
               innerClass={{
                 label: "label"
               }}
