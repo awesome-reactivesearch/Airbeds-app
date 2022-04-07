@@ -103,13 +103,14 @@ class App extends Component {
                 <button className="button ">When</button>
                 <div className="dropdown-content">
                   <DateRange
-                    dataField="date_from"
+                    dataField={["date_from", "date_to"]}
                     componentId="DateRangeSensor"
                     title="When"
                     numberOfMonths={2}
-                    queryFormat="basic_date"
-                    initialMonth={new Date("04/01/2017")}
+                    initialMonth={new Date("2017-04-11")}
                     className="dateFilter"
+                    defaultValue={{start: new Date("2017-04-11"), end: new Date("2017-04-11")}}
+                    queryFormat="date"
                   />
                 </div>
               </div>
@@ -157,7 +158,7 @@ class App extends Component {
                 meta
               ) => (
                 <div>
-                  <div className="total-results">Total results: {meta.resultStats.numberOfResults}</div>
+                  <div className="total-results">Found {meta.resultStats.numberOfResults} results in {meta.resultStats.time}</div>
                 <div className="card-map-container">
                   <div>
                     <div className="card-container">
