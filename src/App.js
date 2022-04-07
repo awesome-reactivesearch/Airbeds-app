@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from 'moment'
 import {
   ReactiveBase,
   SearchBox,
@@ -12,6 +13,29 @@ import './App.css'
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 
 class App extends Component {
+
+	dateQuery(value) {
+		let query = null;
+		if (value) {
+			query = [
+				{
+					range: {
+						date_from: {
+							gte: moment(value.start).format('YYYYMMDD'),
+						},
+					},
+				},
+				{
+					range: {
+						date_to: {
+							lte: moment(value.end).format('YYYYMMDD'),
+						},
+					},
+				},
+			];
+		}
+		return query ? { query: { bool: { must: query } } } : null;
+	}
   onPopoverClick = function(data) {
     return (
       <div className="popover">
@@ -107,10 +131,9 @@ class App extends Component {
                     componentId="DateRangeSensor"
                     title="When"
                     numberOfMonths={2}
-                    initialMonth={new Date("2017-04-11")}
+                    customQuery={this.dateQuery}
                     className="dateFilter"
                     defaultValue={{start: new Date("2017-04-11"), end: new Date("2017-04-11")}}
-                    queryFormat="date"
                   />
                 </div>
               </div>
@@ -158,7 +181,7 @@ class App extends Component {
                 meta
               ) => (
                 <div>
-                  <div className="total-results">Found {meta.resultStats.numberOfResults} results in {meta.resultStats.time}</div>
+                  <div className="total-results">Found {meta.resultStats.numberOfResults} results in {meta.resultStats.time}ms</div>
                 <div className="card-map-container">
                   <div>
                     <div className="card-container">
