@@ -87,8 +87,7 @@
     margin: 8px var(--h-padding);
     cursor: pointer;
     outline: none;
-    height: 40px;
-    width: 111px;
+    padding: 10px 20px;
     border: 1px solid #7a7a7a;
     border-radius: 3px;
   }
@@ -99,9 +98,8 @@
   }
   .search-container{
     margin: 0px var(--h-padding);
-  }
-  .search {
-    width: 740px;
+    flex-grow: 1;
+    justify-self: flex-end;
   }
   .card-map-container{
     display: grid;
