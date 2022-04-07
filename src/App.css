@@ -165,6 +165,9 @@
   }
   .map-container{
     padding-top: 20px;
+    height: 550px;
+    position:sticky;
+    top: 200px;
   }
   .result-stats {
     text-align: right;
