@@ -14,9 +14,9 @@ import registerServiceWorker from './registerServiceWorker';
 
 import './App.css'
 
-class App extends Component {
+const App = ()=> {
 
-	dateQuery(value) {
+	const dateQuery = (value) => {
 		let query = null;
 		if (value) {
 			query = [
@@ -38,7 +38,7 @@ class App extends Component {
 		}
 		return query ? { query: { bool: { must: query } } } : null;
 	}
-  onPopoverClick = function(data) {
+  const onPopoverClick = (data)=> {
     return (
       <div className="popover">
         <div className="image-container">
@@ -56,7 +56,6 @@ class App extends Component {
       </div>
     );
   };
-  render() {
     return (
       <div className="main-container">
         <ReactiveBase
@@ -132,7 +131,7 @@ class App extends Component {
                     componentId="DateRangeSensor"
                     title="When"
                     numberOfMonths={2}
-                    customQuery={this.dateQuery}
+                    customQuery={dateQuery}
                     className="dateFilter"
                     defaultValue={{start: new Date("2017-04-11"), end: new Date("2017-04-11")}}
                   />
@@ -159,7 +158,7 @@ class App extends Component {
               dataField="location"
               defaultZoom={13}
               pagination
-              onPopoverClick={this.onPopoverClick}
+              onPopoverClick={onPopoverClick}
               onPageChange={() => {
                 window.scrollTo(0, 0);
               }}
@@ -231,7 +230,6 @@ class App extends Component {
         </ReactiveBase>
       </div>
     );
-  }
 }
 
 
