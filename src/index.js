@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import moment from 'moment'
 import {
   ReactiveBase,
@@ -165,7 +165,7 @@ const App = ()=> {
               dataField="location"
               defaultZoom={13}
               pagination
-              onPopoverClick={this.onPopoverClick}
+              onPopoverClick={onPopoverClick}
               onPageChange={() => {
                 window.scrollTo(0, 0);
               }}
@@ -239,6 +239,6 @@ const App = ()=> {
     );
 }
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App tab="home" />);
