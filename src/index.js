@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import { ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
+import { RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 
 const App = ()=> {
@@ -18,7 +18,40 @@ const App = ()=> {
             }
           }}
         >
-          <div className="search-container">
+          <div className="filters-search-container">
+            <div className="filter-container">
+              <div className="dropdown">
+                <button className="button">Price</button>
+                <div className="dropdown-content">
+                  {/* Price filter for hotels within range*/}
+                  <RangeInput
+                    componentId="PriceSensor"
+                    dataField="price"
+                    title="Price Range"
+                    range={{
+                      start: 10,
+                      end: 250
+                    }}
+                    rangeLabels={{
+                      start: "$10",
+                      end: "$250"
+                    }}
+                    defaultValue={{
+                      start: 10,
+                      end: 50
+                    }}
+                    stepValue={10}
+                    interval={20}
+                    react={{
+                      and: ["DateRangeSensor", "GuestSensor"]
+                    }}
+                    showHistogram={false}
+                    className="rangeFilter"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="search-container">
               {/* Search hotels by name */}
               <SearchBox
                 componentId="search"
@@ -28,6 +61,7 @@ const App = ()=> {
                 iconPosition="left"
                 className="search"
               />
+            </div>
           </div>
           <div className="result-map-container">
             {/* Show a google map locating hotels */}
