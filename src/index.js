@@ -4,6 +4,8 @@ import moment from 'moment';
 import { DateRange, NumberBox, RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 
+import './App.css'
+
 const App = ()=> {
     //Custom query for getting hotels within a particular range
     const dateQuery = (value) => {
@@ -43,6 +45,12 @@ const App = ()=> {
             }
           }}
         >
+
+          <div className="nav-container">
+            <nav className="nav">
+              <div className="title">Airbeds</div>
+            </nav>
+          </div>
           <div className="filters-search-container">
             <div className="filter-container">
               <div className="dropdown">
@@ -173,7 +181,7 @@ const App = ()=> {
                     </div>
                     <div>{renderPagination()}</div>
                   </div>
-                  <div style={{width:500, height: 500}} className="map-container">{renderMap()}</div>
+                  <div className="map-container">{renderMap()}</div>
                 </div>
                 </div>
               )}
