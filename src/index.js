@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import { RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
+import { NumberBox, RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 
 const App = ()=> {
@@ -47,6 +47,24 @@ const App = ()=> {
                     }}
                     showHistogram={false}
                     className="rangeFilter"
+                  />
+                </div>
+              </div>
+              <div className="dropdown">
+                <button className="button">Guests</button>
+                <div className="dropdown-content-guest">
+                  {/* Filter for minimum no. of guests accomodated */}
+                  <NumberBox
+                    componentId="GuestSensor"
+                    dataField="accommodates"
+                    title="Guests"
+                    defaultValue={2}
+                    labelPosition="right"
+                    data={{
+                      start: 1,
+                      end: 16
+                    }}
+                    className="numberFilter"
                   />
                 </div>
               </div>
