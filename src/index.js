@@ -1,54 +1,62 @@
-import React from 'react';
+import React from "react";
 import {createRoot} from 'react-dom/client';
-import moment from 'moment';
-import { DateRange, NumberBox, RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
-import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
+import moment from 'moment'
+import {
+  ReactiveBase,
+  SearchBox,
+  NumberBox,
+  DateRange,
+  RangeInput,
+  SelectedFilters
+} from "@appbaseio/reactivesearch";
+import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
 
 import './App.css'
 
 const App = ()=> {
-    //Custom query for getting hotels within a particular range
-    const dateQuery = (value) => {
-      let query = null;
-      if (value) {
-        query = [
-          {
-            range: {
-              date_from: {
-                gte: moment(value.start).format('YYYYMMDD'),
-              },
-            },
-          },
-          {
-            range: {
-              date_to: {
-                lte: moment(value.end).format('YYYYMMDD'),
-              },
-            },
-          },
-        ];
-      }
-      return query ? { query: { bool: { must: query } } } : null;
-    }
-    //Show a popover when we click on a map pin
-    const onPopoverClick = (data)=> {
-      return (
-        <div className="popover">
-          <div className="image-container">
-            <img src={data.image} alt={data.name} height="185" width="263" />
+
+  //Custom query for getting hotels within a particular range
+	const dateQuery = (value) => {
+		let query = null;
+		if (value) {
+			query = [
+				{
+					range: {
+						date_from: {
+							gte: moment(value.start).format('YYYYMMDD'),
+						},
+					},
+				},
+				{
+					range: {
+						date_to: {
+							lte: moment(value.end).format('YYYYMMDD'),
+						},
+					},
+				},
+			];
+		}
+		return query ? { query: { bool: { must: query } } } : null;
+	}
+  //Show a popover when we click on a map pin
+  const onPopoverClick = (data)=> {
+    return (
+      <div className="popover">
+        <div className="image-container">
+          <img src={data.image} alt={data.name} height="185" width="263" />
+        </div>
+        <div className="extra-info-container">
+          <div className="type-container info">
+            {data.room_type}-{data.beds} bed
           </div>
-          <div className="extra-info-container">
-            <div className="type-container info">
-              {data.room_type}-{data.beds} bed
-            </div>
-            <div className="name-container info">{data.name}</div>
-            <div className="price-container info">
-              ${data.price} per night-Free cancellation
-            </div>
+          <div className="name-container info">{data.name}</div>
+          <div className="price-container info">
+            ${data.price} per night-Free cancellation
           </div>
         </div>
-      );
-    };
+      </div>
+    );
+  };
     return (
       <div className="main-container">
         {/* Component that connects backend */}
@@ -63,12 +71,12 @@ const App = ()=> {
             }
           }}
         >
-
           <div className="nav-container">
             <nav className="nav">
               <div className="title">Airbeds</div>
             </nav>
           </div>
+          
           <div className="filters-search-container">
             <div className="filter-container">
               <div className="dropdown">
@@ -119,6 +127,7 @@ const App = ()=> {
                   />
                 </div>
               </div>
+
               <div className="dropdown">
                 <button className="button ">When</button>
                 <div className="dropdown-content">
@@ -147,6 +156,9 @@ const App = ()=> {
                 className="search"
               />
             </div>
+            <div className="selected-container">
+              <SelectedFilters/>
+            </div>
           </div>
           <div className="result-map-container">
             {/* Show a google map locating hotels */}
@@ -155,6 +167,7 @@ const App = ()=> {
               dataField="location"
               defaultZoom={13}
               pagination
+              onPopoverClick={onPopoverClick}
               onPageChange={() => {
                 window.scrollTo(0, 0);
               }}
