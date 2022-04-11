@@ -30,7 +30,25 @@ const App = ()=> {
       }
       return query ? { query: { bool: { must: query } } } : null;
     }
-    
+    //Show a popover when we click on a map pin
+    const onPopoverClick = (data)=> {
+      return (
+        <div className="popover">
+          <div className="image-container">
+            <img src={data.image} alt={data.name} height="185" width="263" />
+          </div>
+          <div className="extra-info-container">
+            <div className="type-container info">
+              {data.room_type}-{data.beds} bed
+            </div>
+            <div className="name-container info">{data.name}</div>
+            <div className="price-container info">
+              ${data.price} per night-Free cancellation
+            </div>
+          </div>
+        </div>
+      );
+    };
     return (
       <div className="main-container">
         {/* Component that connects backend */}
@@ -141,6 +159,7 @@ const App = ()=> {
                 window.scrollTo(0, 0);
               }}
               libraries={["places"]}
+              onPopoverClick={onPopoverClick}
               style={{
                 width: "100%",
                 height: "100%"
