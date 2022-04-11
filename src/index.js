@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from 'react-dom';
 import moment from 'moment'
 import {
@@ -10,7 +10,6 @@ import {
   SelectedFilters
 } from "@appbaseio/reactivesearch";
 import { ReactiveGoogleMap } from "@appbaseio/reactivemaps";
-import registerServiceWorker from './registerServiceWorker';
 
 import './App.css'
 
@@ -158,7 +157,7 @@ const App = ()=> {
               dataField="location"
               defaultZoom={13}
               pagination
-              onPopoverClick={onPopoverClick}
+              onPopoverClick={this.onPopoverClick}
               onPageChange={() => {
                 window.scrollTo(0, 0);
               }}
