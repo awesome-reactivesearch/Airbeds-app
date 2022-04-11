@@ -15,6 +15,7 @@ import './App.css'
 
 const App = ()=> {
 
+  //Custom query for getting hotels within a particular range
 	const dateQuery = (value) => {
 		let query = null;
 		if (value) {
@@ -37,6 +38,7 @@ const App = ()=> {
 		}
 		return query ? { query: { bool: { must: query } } } : null;
 	}
+  //Show a popover when we click on a map pin
   const onPopoverClick = (data)=> {
     return (
       <div className="popover">
@@ -57,6 +59,7 @@ const App = ()=> {
   };
     return (
       <div className="main-container">
+        {/* Component that connects backend */}
         <ReactiveBase
           app="clone-airbeds"
           url="https://73afb5484d0e:26bd5cb0-1afc-4e19-8870-4a2eda8d0b56@appbase-demo-ansible-abxiydt-arc.searchbase.io"
@@ -78,6 +81,7 @@ const App = ()=> {
               <div className="dropdown">
                 <button className="button">Price</button>
                 <div className="dropdown-content">
+                  {/* Price filter for hotels within range*/}
                   <RangeInput
                     componentId="PriceSensor"
                     dataField="price"
@@ -107,6 +111,7 @@ const App = ()=> {
               <div className="dropdown">
                 <button className="button">Guests</button>
                 <div className="dropdown-content-guest">
+                  {/* Filter for minimum no. of guests accomodated */}
                   <NumberBox
                     componentId="GuestSensor"
                     dataField="accommodates"
@@ -125,6 +130,7 @@ const App = ()=> {
               <div className="dropdown">
                 <button className="button ">When</button>
                 <div className="dropdown-content">
+                  {/* Date filter for hotels that are available within the range */}
                   <DateRange
                     dataField={["date_from", "date_to"]}
                     componentId="DateRangeSensor"
@@ -138,6 +144,7 @@ const App = ()=> {
               </div>
             </div>
             <div className="search-container">
+              {/* Search hotels by name */}
               <SearchBox
                 componentId="search"
                 dataField="name"
@@ -152,6 +159,7 @@ const App = ()=> {
             </div>
           </div>
           <div className="result-map-container">
+            {/* Show a google map locating hotels */}
             <ReactiveGoogleMap
               componentId="map"
               dataField="location"
