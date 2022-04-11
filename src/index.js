@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import { ReactiveBase } from '@appbaseio/reactivesearch';
+import { ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 
 const App = ()=> {
     return (
@@ -16,7 +16,17 @@ const App = ()=> {
             }
           }}
         >
-            Hello from Reactivesearch!
+          <div className="search-container">
+              {/* Search hotels by name */}
+              <SearchBox
+                componentId="search"
+                dataField="name"
+                autosuggest={false}
+                placeholder="Search housings..."
+                iconPosition="left"
+                className="search"
+              />
+          </div>
         </ReactiveBase>
       </div>
     );
