@@ -1,9 +1,34 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import { NumberBox, RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
+import moment from 'moment';
+import { DateRange, NumberBox, RangeInput, ReactiveBase, SearchBox } from '@appbaseio/reactivesearch';
 import { ReactiveGoogleMap } from '@appbaseio/reactivemaps';
 
 const App = ()=> {
+    //Custom query for getting hotels within a particular range
+    const dateQuery = (value) => {
+      let query = null;
+      if (value) {
+        query = [
+          {
+            range: {
+              date_from: {
+                gte: moment(value.start).format('YYYYMMDD'),
+              },
+            },
+          },
+          {
+            range: {
+              date_to: {
+                lte: moment(value.end).format('YYYYMMDD'),
+              },
+            },
+          },
+        ];
+      }
+      return query ? { query: { bool: { must: query } } } : null;
+    }
+    
     return (
       <div className="main-container">
         {/* Component that connects backend */}
@@ -65,6 +90,21 @@ const App = ()=> {
                       end: 16
                     }}
                     className="numberFilter"
+                  />
+                </div>
+              </div>
+              <div className="dropdown">
+                <button className="button ">When</button>
+                <div className="dropdown-content">
+                  {/* Date filter for hotels that are available within the range */}
+                  <DateRange
+                    dataField={["date_from", "date_to"]}
+                    componentId="DateRangeSensor"
+                    title="When"
+                    numberOfMonths={2}
+                    customQuery={dateQuery}
+                    className="dateFilter"
+                    defaultValue={{start: new Date("2017-04-11"), end: new Date("2017-04-11")}}
                   />
                 </div>
               </div>
