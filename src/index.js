@@ -10,6 +10,7 @@ const App = ()=> {
         <ReactiveBase
           app="clone-airbeds"
           url="https://73afb5484d0e:26bd5cb0-1afc-4e19-8870-4a2eda8d0b56@appbase-demo-ansible-abxiydt-arc.searchbase.io"
+          mapKey='AIzaSyCqWUHFYNXCMlt13StFZzim5y06Yr99vRY'
           enableAppbase
           theme={{
             colors: {
@@ -38,6 +39,7 @@ const App = ()=> {
               onPageChange={() => {
                 window.scrollTo(0, 0);
               }}
+              libraries={["places"]}
               style={{
                 width: "100%",
                 height: "100%"
@@ -48,14 +50,12 @@ const App = ()=> {
               innerClass={{
                 label: "label"
               }}
-              renderAllData={(
-                hits,
-                loadMore,
+              render={({
+                data: hits,
                 renderMap,
                 renderPagination,
-                triggerClickAnalytics,
                 meta
-              ) => (
+              }) => (
                 <div>
                   <div className="total-results">Found {meta.resultStats.numberOfResults} results in {meta.resultStats.time}ms</div>
                 <div className="card-map-container">
@@ -84,7 +84,7 @@ const App = ()=> {
                 </div>
                 </div>
               )}
-              renderData={data => ({
+              renderItem={data => ({
                 label: (
                   <div
                     className="marker"
