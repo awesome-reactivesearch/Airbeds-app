@@ -54,10 +54,10 @@ const App = ()=> {
                 data: hits,
                 renderMap,
                 renderPagination,
-                meta
+                resultStats
               }) => (
                 <div>
-                  <div className="total-results">Found {meta.resultStats.numberOfResults} results in {meta.resultStats.time}ms</div>
+                  <div className="total-results">Found {resultStats.numberOfResults} results in {resultStats.time}ms</div>
                 <div className="card-map-container">
                   <div>
                     <div className="card-container">
