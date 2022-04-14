@@ -102,6 +102,7 @@ const App = ()=> {
                     componentId="DateRangeSensor"
                     title="When"
                     numberOfMonths={2}
+                    initialMonth={new Date("2017-04-11")}
                     customQuery={dateQuery}
                     className="dateFilter"
                     defaultValue={{start: new Date("2017-04-11"), end: new Date("2017-04-11")}}
