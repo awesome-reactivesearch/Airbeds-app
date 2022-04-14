@@ -172,7 +172,6 @@ const App = ()=> {
                 window.scrollTo(0, 0);
               }}
               libraries={["places"]}
-              onPopoverClick={onPopoverClick}
               style={{
                 width: "100%",
                 height: "100%"
