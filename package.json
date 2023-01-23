@@ -6,8 +6,8 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
-    "@appbaseio/reactivemaps": "^3.0.0-beta.17",
-    "@appbaseio/reactivesearch": "^3.29.1",
+    "@appbaseio/reactivemaps": "^3.1.0-preview.1",
+    "@appbaseio/reactivesearch": "3.29.2-preview.4",
     "moment": "^2.29.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
